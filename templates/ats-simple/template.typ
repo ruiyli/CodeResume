@@ -80,7 +80,7 @@
 }
 
 // ============================================================================
-// SUMMARY - Always render as plain text
+// SUMMARY
 // ============================================================================
 #if "summary" in data and data.summary != none {
   section-heading(L.summary)
@@ -94,44 +94,39 @@
 #if "experience" in data and data.experience.len() > 0 {
   section-heading(L.experience)
   for exp in data.experience {
-    // Job title and company
     text(weight: "bold", size: 10pt)[#exp.title]
     v(0.05em)
     text(size: 9.5pt)[#exp.company]
-    
-    // Location if available
-    #if "location" in exp and exp.location != none {
+
+    if "location" in exp and exp.location != none {
       v(0.05em)
       text(size: 9pt)[#exp.location]
     }
-    
-    // Dates
-    #if "start-date" in exp {
+
+    if "start-date" in exp {
       v(0.05em)
       text(size: 9pt)[#fmt-date(exp.at("start-date")) — #fmt-date(exp.at("end-date", default: none))]
     }
-    
-    // Highlights (bullets)
-    #if "highlights" in exp and exp.highlights.len() > 0 {
+
+    if "highlights" in exp and exp.highlights.len() > 0 {
       v(0.2em)
       for bullet in exp.highlights {
         text(size: 9pt)[• #bullet]
         v(0.1em)
       }
     }
-    
-    // Technologies if available
-    #if "technologies" in exp and exp.technologies.len() > 0 {
+
+    if "technologies" in exp and exp.technologies.len() > 0 {
       v(0.05em)
       text(size: 9pt)[Technologies: #exp.technologies.join(", ")]
     }
-    
+
     v(0.25em)
   }
 }
 
 // ============================================================================
-// EDUCATION - Plain text listing
+// EDUCATION
 // ============================================================================
 #if "education" in data and data.education.len() > 0 {
   section-heading(L.education)
@@ -139,31 +134,31 @@
     text(weight: "bold", size: 10pt)[#edu.institution]
     v(0.05em)
     text(size: 9.5pt)[#edu.degree]
-    
-    #if "gpa" in edu and edu.gpa != none {
+
+    if "gpa" in edu and edu.gpa != none {
       v(0.05em)
       text(size: 9pt)[GPA: #edu.gpa]
     }
-    
-    #if "start-date" in edu {
+
+    if "start-date" in edu {
       v(0.05em)
       text(size: 9pt)[#fmt-date(edu.at("start-date")) — #fmt-date(edu.at("end-date", default: none))]
     }
-    
-    #if "highlights" in edu and edu.highlights.len() > 0 {
+
+    if "highlights" in edu and edu.highlights.len() > 0 {
       v(0.1em)
       for highlight in edu.highlights {
         text(size: 9pt)[• #highlight]
         v(0.05em)
       }
     }
-    
+
     v(0.2em)
   }
 }
 
 // ============================================================================
-// SKILLS - Plain comma-separated lists
+// SKILLS
 // ============================================================================
 #if "skills" in data and data.skills.at("groups", default: ()).len() > 0 {
   section-heading(L.skills)
@@ -174,63 +169,59 @@
 }
 
 // ============================================================================
-// PROJECTS - Simple text blocks
+// PROJECTS
 // ============================================================================
 #if "projects" in data and data.projects.len() > 0 {
   section-heading(L.projects)
   for proj in data.projects {
     text(weight: "bold", size: 10pt)[#proj.name]
-    
-    #if "role" in proj and proj.role != none {
+
+    if "role" in proj and proj.role != none {
       v(0.05em)
       text(size: 9pt)[Role: #proj.role]
     }
-    
+
     v(0.05em)
     text(size: 9.5pt)[#proj.description]
-    
-    #if "url" in proj and proj.url != none {
+
+    if "url" in proj and proj.url != none {
       v(0.05em)
       text(size: 9pt)[#proj.url]
     }
-    
-    #if "technologies" in proj and proj.technologies.len() > 0 {
+
+    if "technologies" in proj and proj.technologies.len() > 0 {
       v(0.05em)
       text(size: 9pt)[Technologies: #proj.technologies.join(", ")]
     }
-    
-    #if "highlights" in proj and proj.highlights.len() > 0 {
+
+    if "highlights" in proj and proj.highlights.len() > 0 {
       v(0.1em)
       for highlight in proj.highlights {
         text(size: 9pt)[• #highlight]
         v(0.05em)
       }
     }
-    
+
     v(0.2em)
   }
 }
 
 // ============================================================================
-// CERTIFICATIONS - Bullet list format
+// CERTIFICATIONS
 // ============================================================================
 #if "certifications" in data and data.certifications.len() > 0 {
   section-heading(L.certifications)
   for cert in data.certifications {
     text(size: 9.5pt)[• #cert.name]
-    
-    #if "issuer" in cert and cert.issuer != none {
+
+    if "issuer" in cert and cert.issuer != none {
       text(size: 9pt)[ — #cert.issuer]
     }
-    
-    #if "date" in cert and cert.date != none {
+
+    if "date" in cert and cert.date != none {
       text(size: 9pt)[ (#fmt-date(cert.date))]
     }
-    
+
     v(0.1em)
   }
 }
-
-// ============================================================================
-// END OF TEMPLATE
-// ============================================================================

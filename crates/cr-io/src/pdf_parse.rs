@@ -96,7 +96,7 @@ pub fn analyze_ats_compatibility(text: &str) -> AtsAnalysisResult {
         suggestions.push("Verify the PDF generates correctly and contains all resume content".to_string());
     }
 
-    let is_compatible = issues.is_empty() && text_length > 200;
+    let is_compatible = issues.is_empty() && text_length > 100;
 
     AtsAnalysisResult {
         is_compatible,

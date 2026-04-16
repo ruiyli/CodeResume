@@ -10,6 +10,7 @@ pub enum TemplateId {
     Minimal,
     TwoColumn,
     Academic,
+    #[serde(rename = "ats-simple")]
     AtSimple,
     Brilliant,
 }

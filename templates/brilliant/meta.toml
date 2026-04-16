@@ -1,0 +1,7 @@
+id = "brilliant"
+name = "Brilliant"
+name_zh = "炫彩"
+description = "Vibrant gradient accents with modern visual flair. Stands out for creative and tech roles."
+description_zh = "渐变色彩搭配现代视觉风格，适合创意和科技岗位，令人印象深刻。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 2

@@ -276,7 +276,7 @@
     v(0.05em)
     text(size: 8.9pt, fill: muted)[
       #if "authors" in p and p.authors != none [#p.authors · ]
-      _#p.venue_
+      #emph(p.venue)
       #if "date" in p and p.date != none [, #fmt-date(p.date)]
       #if "url" in p and p.url != none [ · #link(p.url)[[link]]]
     ]

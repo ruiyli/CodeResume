@@ -1,0 +1,7 @@
+id = "ats-simple"
+name = "ATS-Simple"
+name_zh = "ATS兼容"
+description = "Single-column plain text layout optimized for Applicant Tracking Systems. Maximum parsability."
+description_zh = "单栏纯文本布局，针对ATS系统优化，确保最大可解析性。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 2

@@ -124,7 +124,7 @@
     fill: theme.bg-accent,
     radius: 4pt,
     inset: (x: 5pt, y: 2.5pt),
-    text(size: 7.9pt, fill: theme.accent, weight: "500")[#content]
+    text(size: 7.9pt, fill: theme.accent, weight: "medium")[#content]
   )
 }
 
@@ -167,7 +167,7 @@
   }
   #v(0.2em)
   #if "title" in data.personal and data.personal.title != none {
-    text(size: 11.5pt, fill: theme.text-secondary, weight: "500")[#data.personal.title]
+    text(size: 11.5pt, fill: theme.text-secondary, weight: "medium")[#data.personal.title]
     v(0.25em)
   }
   #text(size: 8.5pt, fill: theme.text-muted)[
@@ -336,7 +336,7 @@
     v(0.08em)
     text(size: 9pt, fill: theme.text-secondary)[
       #if "authors" in p and p.authors != none [#p.authors · ]
-      _#p.venue_
+      #emph(p.venue)
       #if "date" in p and p.date != none [, #fmt-date(p.date)]
       #if "url" in p and p.url != none [ · #link(p.url)[[link]]]
     ]
