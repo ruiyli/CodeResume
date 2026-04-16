@@ -1,5 +1,5 @@
-// Minimal Resume Template — CodeResume
-// Ultra-clean, maximum whitespace
+// Minimal Resume Template — CodeResume (Enhanced)
+// Ultra-clean, maximum whitespace with improved visual hierarchy
 
 #let lang = sys.inputs.at("lang", default: "en")
 #let data-path = sys.inputs.at("data-path", default: "resume-data.json")
@@ -13,7 +13,8 @@
    projects: "Projects", present: "Present", summary: "Summary")
 }
 
-#let muted = rgb("#999999")
+#let muted = rgb("#888888")
+#let accent = rgb("#333333")
 
 #let body-font = if lang == "zh" {
   ("PingFang SC", "Hiragino Sans GB", "Heiti SC", "Noto Sans CJK SC")
@@ -21,7 +22,7 @@
   ("Helvetica Neue", "Inter", "Arial", "Liberation Sans")
 }
 
-#set page(paper: "a4", margin: (top: 1.5cm, bottom: 1.5cm, left: 2cm, right: 2cm))
+#set page(paper: "a4", margin: (top: 1.4cm, bottom: 1.4cm, left: 1.8cm, right: 1.8cm))
 #set text(font: body-font, size: 9pt, fill: rgb("#222222"))
 #set par(leading: 0.55em)
 
@@ -41,9 +42,10 @@
 }
 
 #let section-heading(title) = {
-  v(1em)
-  smallcaps(text(size: 10pt, weight: "regular", fill: muted, tracking: 0.15em)[#title])
-  v(0.5em)
+  v(0.8em)
+  // Enhanced: bold instead of smallcaps, larger size
+  text(size: 10.5pt, weight: "bold", fill: accent)[#title]
+  v(0.35em)
 }
 
 // HEADER
@@ -54,9 +56,9 @@
       box(radius: 50%, clip: true,
         image(photo, width: 2cm, height: 2cm, fit: "cover")),
       [
-        #text(size: 18pt, weight: "light", tracking: 0.05em)[#data.personal.name]
-        #v(0.2em)
-        #text(size: 8.5pt, fill: muted)[
+        #text(size: 17pt, weight: "bold", tracking: 0.02em)[#data.personal.name]
+        #v(0.15em)
+        #text(size: 8.3pt, fill: muted)[
           #data.personal.email
           #if "phone" in data.personal and data.personal.phone != none [ · #data.personal.phone]
           #if "location" in data.personal and data.personal.location != none [ · #data.personal.location]
@@ -66,9 +68,9 @@
       ]
     )
   } else {
-    text(size: 18pt, weight: "light", tracking: 0.05em)[#data.personal.name]
-    v(0.2em)
-    text(size: 8.5pt, fill: muted)[
+    text(size: 17pt, weight: "bold", tracking: 0.02em)[#data.personal.name]
+    v(0.1em)
+    text(size: 8.3pt, fill: muted)[
       #data.personal.email
       #if "phone" in data.personal and data.personal.phone != none [ · #data.personal.phone]
       #if "location" in data.personal and data.personal.location != none [ · #data.personal.location]
@@ -80,8 +82,8 @@
 
 // SUMMARY
 #if "summary" in data and data.summary != none {
-  v(0.6em)
-  text(size: 9pt, fill: rgb("#555555"))[#data.summary]
+  v(0.4em)
+  text(size: 8.8pt, fill: rgb("#555555"))[#data.summary]
 }
 
 // EXPERIENCE
@@ -89,11 +91,11 @@
   section-heading(L.experience)
   for exp in data.experience {
     grid(columns: (1fr, auto),
-      [#text(weight: "bold", size: 9.5pt)[#exp.title] #text(fill: muted)[at #exp.company]],
+      [#text(weight: "bold", size: 9.3pt)[#exp.title] #text(fill: muted, size: 8.9pt)[at #exp.company]],
       align(right, text(size: 8pt, fill: muted)[#fmt-date(exp.at("start-date")) — #fmt-date(exp.at("end-date", default: none))]))
-    v(0.1em)
+    v(0.08em)
     for bullet in exp.at("highlights", default: ()) { [- #text(size: 8.5pt)[#bullet]] }
-    v(0.4em)
+    v(0.3em)
   }
 }
 
@@ -102,9 +104,9 @@
   section-heading(L.education)
   for edu in data.education {
     grid(columns: (1fr, auto),
-      [#text(weight: "bold", size: 9.5pt)[#edu.institution] #text(fill: muted)[#edu.degree]],
+      [#text(weight: "bold", size: 9.3pt)[#edu.institution] #text(fill: muted, size: 8.9pt)[#edu.degree]],
       align(right, text(size: 8pt, fill: muted)[#fmt-date(edu.at("start-date")) — #fmt-date(edu.at("end-date", default: none))]))
-    v(0.2em)
+    v(0.15em)
   }
 }
 
@@ -113,7 +115,7 @@
   section-heading(L.skills)
   for group in data.skills.groups {
     text(size: 8.5pt)[*#group.category* #group.skills.join(" · ")]
-    v(0.1em)
+    v(0.08em)
   }
 }
 
@@ -121,9 +123,9 @@
 #if "projects" in data and data.projects.len() > 0 {
   section-heading(L.projects)
   for proj in data.projects {
-    text(weight: "bold", size: 9.5pt)[#proj.name]
-    v(0.05em)
+    text(weight: "bold", size: 9.3pt)[#proj.name]
+    v(0.03em)
     text(size: 8.5pt)[#proj.description]
-    v(0.3em)
+    v(0.25em)
   }
 }
