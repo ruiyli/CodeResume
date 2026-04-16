@@ -1,0 +1,7 @@
+id = "minimal"
+name = "Minimal"
+name_zh = "极简"
+description = "Ultra-clean with maximum whitespace. Ideal for senior engineers."
+description_zh = "超清爽大量留白。适合资深工程师。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 1

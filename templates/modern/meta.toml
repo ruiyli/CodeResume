@@ -1,0 +1,7 @@
+id = "modern"
+name = "Modern Tech"
+name_zh = "现代科技"
+description = "Clean, modern layout with accent colors. Best for 1-2 page tech resumes."
+description_zh = "简洁现代布局，带有强调色。适合1-2页技术简历。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 2

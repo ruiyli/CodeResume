@@ -1,0 +1,11 @@
+[package]
+name = "cr-config"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+cr-core.workspace = true
+serde.workspace = true
+toml.workspace = true
+dirs.workspace = true
+anyhow.workspace = true

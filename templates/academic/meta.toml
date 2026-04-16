@@ -1,0 +1,7 @@
+id = "academic"
+name = "Academic"
+name_zh = "学术"
+description = "Education-first layout with publications section. For academic and research roles."
+description_zh = "教育优先布局，含论文发表区域。适合学术和研究岗位。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 3

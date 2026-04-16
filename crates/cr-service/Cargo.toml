@@ -1,0 +1,14 @@
+[package]
+name = "cr-service"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+cr-core.workspace = true
+cr-config.workspace = true
+cr-ai.workspace = true
+cr-io.workspace = true
+cr-render.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+tracing.workspace = true

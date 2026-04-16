@@ -1,0 +1,28 @@
+# Build artifacts
+/target/
+**/target/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config with secrets
+config.toml
+
+# Temp files in templates (generated during render)
+templates/*/resume-data.json
+templates/*/photo.*
+
+# Demo output
+demo-output/
+
+# Environment
+.env
+.env.local

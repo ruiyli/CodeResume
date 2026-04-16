@@ -1,0 +1,80 @@
+version: "1.0"
+language: zh
+personal:
+  name: "张伟"
+  name_alt: "Wei Zhang"
+  email: "zhangwei@example.com"
+  phone: "+86-138-0000-0000"
+  location: "北京市"
+  title: "高级软件工程师"
+  photo: "sample-data/photo.png"
+  github: "https://github.com/zhangwei"
+  linkedin: "https://linkedin.com/in/zhangwei"
+
+summary: "拥有8年分布式系统开发经验的高级软件工程师。擅长高并发架构设计、性能优化和技术团队管理。"
+
+experience:
+  - company: "字节跳动"
+    title: "高级后端工程师"
+    location: "北京"
+    start_date:
+      year: 2021
+      month: 4
+    highlights:
+      - "主导推荐系统核心服务重构，日处理请求量从5亿提升至20亿，延迟降低40%"
+      - "设计并实现分布式缓存架构，节省服务器成本30%，命中率达99.5%"
+      - "带领6人团队负责用户增长平台，DAU增长25%"
+    technologies:
+      - "Go"
+      - "Rust"
+      - "Kubernetes"
+      - "Redis"
+      - "Kafka"
+
+  - company: "阿里巴巴"
+    title: "软件工程师"
+    location: "杭州"
+    start_date:
+      year: 2018
+      month: 7
+    end_date:
+      year: 2021
+      month: 3
+    highlights:
+      - "参与双11核心交易链路优化，支撑峰值58万笔/秒交易"
+      - "设计消息队列中间件，日均处理消息量达100亿条"
+      - "编写技术文档和最佳实践指南，被部门内20+团队采用"
+    technologies:
+      - "Java"
+      - "Go"
+      - "MySQL"
+      - "RocketMQ"
+
+education:
+  - institution: "清华大学"
+    degree: "计算机科学与技术 学士"
+    start_date: 2014
+    end_date: 2018
+    gpa: "3.8/4.0"
+    highlights:
+      - "国家奖学金获得者"
+      - "ACM-ICPC亚洲区域赛银奖"
+
+skills:
+  groups:
+    - category: "编程语言"
+      skills: ["Go", "Rust", "Java", "Python", "TypeScript"]
+    - category: "基础设施"
+      skills: ["Kubernetes", "Docker", "AWS", "阿里云", "Terraform"]
+    - category: "数据库"
+      skills: ["MySQL", "Redis", "Elasticsearch", "TiDB", "MongoDB"]
+    - category: "中间件"
+      skills: ["Kafka", "RocketMQ", "gRPC", "Nginx", "Prometheus"]
+
+projects:
+  - name: "高性能网关"
+    description: "基于Rust开发的高性能API网关，支持动态路由和熔断降级"
+    highlights:
+      - "单机支撑10万+QPS，P99延迟<1ms"
+      - "支持热加载配置，零停机更新路由规则"
+    technologies: ["Rust", "Tokio", "Redis"]

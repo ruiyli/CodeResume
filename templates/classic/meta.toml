@@ -1,0 +1,7 @@
+id = "classic"
+name = "Classic"
+name_zh = "经典"
+description = "Traditional serif layout with conservative styling. Suitable for all industries."
+description_zh = "传统衬线字体布局，风格保守。适合所有行业。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 2

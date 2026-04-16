@@ -1,0 +1,7 @@
+id = "two-column"
+name = "Two Column"
+name_zh = "双栏"
+description = "Sidebar layout with skills/contact on the left, experience on the right."
+description_zh = "侧边栏布局，左侧放技能和联系方式，右侧放经历。"
+supports_languages = ["en", "zh"]
+page_limit_hint = 2

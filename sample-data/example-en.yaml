@@ -1,0 +1,117 @@
+version: "1.0"
+language: en
+personal:
+  name: "John Doe"
+  email: "john.doe@example.com"
+  phone: "+1-555-0100"
+  location: "San Francisco, CA"
+  title: "Senior Software Engineer"
+  photo: "sample-data/photo.png"
+  website: "https://johndoe.dev"
+  linkedin: "https://linkedin.com/in/johndoe"
+  github: "https://github.com/johndoe"
+
+summary: "Senior Software Engineer with 8+ years of experience building scalable distributed systems. Passionate about performance optimization, clean architecture, and mentoring junior engineers."
+
+experience:
+  - company: "TechCorp Inc."
+    title: "Senior Software Engineer"
+    location: "San Francisco, CA"
+    start_date:
+      year: 2021
+      month: 3
+    highlights:
+      - "Led migration from monolith to microservices architecture, reducing deploy time by 40% and improving system reliability to 99.99% uptime"
+      - "Designed and implemented real-time data pipeline processing 1M+ events/sec using Kafka and Rust, reducing end-to-end latency by 60%"
+      - "Mentored team of 5 junior engineers, establishing code review practices that reduced production bugs by 35%"
+      - "Architected distributed caching layer using Redis, reducing database load by 70% and API response time by 45%"
+    technologies:
+      - "Rust"
+      - "Go"
+      - "Kubernetes"
+      - "Kafka"
+      - "Redis"
+      - "PostgreSQL"
+
+  - company: "StartupXYZ"
+    title: "Software Engineer"
+    location: "Remote"
+    start_date:
+      year: 2018
+      month: 6
+    end_date:
+      year: 2021
+      month: 2
+    highlights:
+      - "Built RESTful API serving 10K+ requests/sec using Go, with comprehensive test coverage of 92%"
+      - "Implemented CI/CD pipeline with GitHub Actions, reducing release cycle from 2 weeks to daily deployments"
+      - "Developed real-time notification system using WebSockets, serving 50K concurrent users"
+    technologies:
+      - "Go"
+      - "Python"
+      - "Docker"
+      - "AWS"
+      - "PostgreSQL"
+
+  - company: "BigTech Corp"
+    title: "Junior Software Engineer"
+    location: "Seattle, WA"
+    start_date:
+      year: 2016
+      month: 7
+    end_date:
+      year: 2018
+      month: 5
+    highlights:
+      - "Developed internal tooling that automated manual QA processes, saving 20 hours/week across the team"
+      - "Contributed to core search ranking algorithm, improving click-through rate by 8%"
+    technologies:
+      - "Python"
+      - "Java"
+      - "AWS"
+
+education:
+  - institution: "Massachusetts Institute of Technology"
+    degree: "B.S. Computer Science"
+    start_date: 2012
+    end_date: 2016
+    gpa: "3.9/4.0"
+    highlights:
+      - "Dean's List all semesters"
+      - "Teaching Assistant for Distributed Systems (6.824)"
+
+skills:
+  groups:
+    - category: "Languages"
+      skills: ["Rust", "Go", "Python", "TypeScript", "Java", "SQL"]
+    - category: "Infrastructure"
+      skills: ["Kubernetes", "Docker", "AWS", "GCP", "Terraform", "Helm"]
+    - category: "Databases"
+      skills: ["PostgreSQL", "Redis", "Elasticsearch", "MongoDB", "DynamoDB"]
+    - category: "Tools"
+      skills: ["Git", "Linux", "Kafka", "gRPC", "GraphQL", "Prometheus"]
+
+projects:
+  - name: "distributed-kv"
+    url: "https://github.com/johndoe/distributed-kv"
+    description: "A distributed key-value store built in Rust with Raft consensus"
+    role: "Creator & Maintainer"
+    highlights:
+      - "Implements Raft consensus protocol for fault tolerance across 3-5 node clusters"
+      - "Achieves 100K+ reads/sec and 50K+ writes/sec with persistent storage"
+    technologies: ["Rust", "Tokio", "gRPC"]
+
+  - name: "api-gateway"
+    url: "https://github.com/johndoe/api-gateway"
+    description: "High-performance API gateway with rate limiting and circuit breaking"
+    highlights:
+      - "Handles 50K+ concurrent connections with sub-millisecond routing latency"
+      - "Supports dynamic configuration reload without downtime"
+    technologies: ["Go", "Redis", "Docker"]
+
+open_source:
+  - project: "tokio-rs/tokio"
+    url: "https://github.com/tokio-rs/tokio"
+    role: "Contributor"
+    description: "Contributed performance improvements to the async runtime scheduler"
+    stars: 25000
