@@ -2,6 +2,13 @@
 name = "cr-io"
 version.workspace = true
 edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "File I/O utilities for resume data (YAML, JSON, Markdown)"
+repository = "https://github.com/ruiyli/CodeResume"
+homepage = "https://github.com/ruiyli/CodeResume"
+categories = ["text-processing"]
+keywords = ["resume", "io", "yaml", "json", "markdown"]
 
 [dependencies]
 cr-core.workspace = true

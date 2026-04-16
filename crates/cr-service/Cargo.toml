@@ -2,6 +2,13 @@
 name = "cr-service"
 version.workspace = true
 edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Business logic orchestration for CodeResume operations"
+repository = "https://github.com/ruiyli/CodeResume"
+homepage = "https://github.com/ruiyli/CodeResume"
+categories = ["text-processing"]
+keywords = ["resume", "service", "business-logic", "orchestration"]
 
 [dependencies]
 cr-core.workspace = true

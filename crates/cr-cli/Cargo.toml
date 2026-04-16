@@ -2,6 +2,14 @@
 name = "cr-cli"
 version.workspace = true
 edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "AI-powered, ATS-friendly resume generator with Typst templates"
+repository = "https://github.com/ruiyli/CodeResume"
+homepage = "https://github.com/ruiyli/CodeResume"
+categories = ["command-line-utilities", "graphics", "text-processing"]
+keywords = ["resume", "pdf", "ai", "typst", "cv"]
+readme = "../../README.md"
 
 [[bin]]
 name = "coderesume"

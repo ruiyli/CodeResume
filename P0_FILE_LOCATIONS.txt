@@ -1,0 +1,290 @@
+================================================================================
+                         CRITICAL FILE LOCATIONS
+================================================================================
+
+PROJECT ROOT: /Users/albertaryli/Downloads/CV/coderesume/
+
+📄 REPORT FILES (JUST CREATED):
+  ✅ P0_FINDINGS.md           (412 lines) — Full comprehensive findings
+  ✅ P0_QUICK_SUMMARY.txt     (~800 lines) — Quick reference guide
+
+================================================================================
+P0-1: ATS COMPATIBILITY — KEY FILES
+================================================================================
+
+TEMPLATES (All in /templates/ directory):
+
+  two-column/template.typ
+  └─ Line 60-61: #grid(columns: (30%, 70%)) ⚠️ ATS-INCOMPATIBLE
+     Line 63-128: Left sidebar
+     Line 131-172: Right main area
+     Problem: Grid layout breaks ATS parsing
+
+  modern/template.typ
+  └─ Line 148-158, 177-186: grid() for experience/education (inline only)
+     Line 90-97: pill() helper with box/fill (minor ATS issue)
+     ✅ Mostly ATS-compatible
+
+  classic/template.typ
+  └─ Line 91-98, 105-108: grid() for alignment only
+     ✅ Good ATS compatibility
+
+  minimal/template.typ
+  └─ Line 53-67: grid() for photo + header
+     Line 91-96, 104-106: grid() for alignment
+     ✅ ATS-neutral
+
+  academic/template.typ
+  └─ Line 92-96, 122-124: grid() for alignment
+     ✅ No major ATS issues
+
+PDF TEXT EXTRACTION (NOT IMPLEMENTED):
+  crates/cr-io/src/pdf_parse.rs
+  └─ Line 1-12: STUBBED IMPLEMENTATION
+     TODO: "Implement PDF text extraction using pdf-extract crate"
+     Current: Raises error "PDF text extraction not yet implemented"
+
+DATA MODEL - SKILLS (NEEDS ENHANCEMENT):
+  crates/cr-core/src/resume.rs
+  └─ Line 131-141: SkillSet and SkillGroup
+     Missing: proficiency level, years of experience
+     Current: Only supports flat string lists
+
+================================================================================
+P0-2: PUBLISHING — KEY FILES
+================================================================================
+
+WORKSPACE CONFIG (✅ CORRECT):
+  Cargo.toml (workspace root)
+  └─ Line 14: version = "0.1.0"
+     Line 16: license = "MIT"
+     Line 17: authors = ["CodeResume Contributors"]
+     Line 15: edition = "2021"
+
+CARGO.LOCK (✅ CORRECT):
+  Cargo.lock (2527 lines)
+  └─ Committed to repository ✓
+     Best practice for binary crates ✓
+
+CLI BINARY CONFIG (❌ INCOMPLETE):
+  crates/cr-cli/Cargo.toml
+  └─ Line 1-2: [package] name = "cr-cli"
+     Line 3: version.workspace = true
+     Line 6-8: [[bin]] name = "coderesume"
+     
+     MISSING FIELDS:
+     ✗ description (REQUIRED for crates.io)
+     ✗ repository
+     ✗ homepage
+     ✗ categories
+     ✗ keywords
+     ✗ readme
+
+  REQUIRED ADDITIONS (COPY-PASTE):
+  description = "AI-powered, ATS-friendly resume generator with Typst templates"
+  repository = "https://github.com/ruiyli/CodeResume"
+  homepage = "https://github.com/ruiyli/CodeResume"
+  categories = ["command-line-utilities", "graphics", "text-processing"]
+  keywords = ["resume", "pdf", "ai", "typst", "cv"]
+  readme = "../README.md"
+
+HOMEBREW FORMULA (TO CREATE):
+  File: scripts/homebrew/coderesume.rb
+  Status: Does not exist yet
+  Template: Use standard homebrew formula for Rust binaries
+  Dependency: Typst (runtime dependency)
+
+CI/CD (✅ ALREADY PRESENT):
+  .github/workflows/ (GitHub Actions)
+  └─ Line 7 in README.md shows CI badge
+     Pipeline already configured
+
+================================================================================
+P0-3: TEMPLATE VISUAL QUALITY — KEY FILES
+================================================================================
+
+MODERN TEMPLATE (BEST BASELINE):
+  templates/modern/template.typ (260 lines)
+  └─ Line 39: accent = rgb("#2563eb") — vibrant blue
+     Line 55: text size 9.5pt
+     Line 56: line-leading 0.6em — good spacing
+     Line 59-65: section-heading() function with underline
+     Line 90-97: pill() helper for tech badges
+     Line 148-158: experience with grid layout
+     Line 177-186: education with grid layout
+     ✅ Excellent baseline for enhancement
+
+CLASSIC TEMPLATE:
+  templates/classic/template.typ (135 lines)
+  └─ Line 18: muted = rgb("#555555")
+     Line 27: text size 10pt, serif fonts
+     Line 45-51: section-heading() with bold line
+     Line 91-98: experience with grid
+     Line 105-108: education with grid
+     ✅ Good ATS compatibility, conservative design
+
+MINIMAL TEMPLATE:
+  templates/minimal/template.typ (130 lines)
+  └─ Line 16: muted = rgb("#999999")
+     Line 25: text size 9pt
+     Line 45: smallcaps() for section headings
+     Line 53-67: grid for photo + header
+     Line 91-96: experience with grid
+     ⚠️ Ultra-clean, needs more visual hierarchy
+
+ACADEMIC TEMPLATE:
+  templates/academic/template.typ (152 lines)
+  └─ Line 18: accent = rgb("#7c3aed") — purple
+     Line 28: serif fonts (Georgia, Times New Roman)
+     Line 103-115: publications section
+     Line 92-96: education grid
+     ✅ Well-structured
+
+TWO-COLUMN TEMPLATE (ATS INCOMPATIBLE):
+  templates/two-column/template.typ (173 lines)
+  └─ Line 16: accent = rgb("#1e3a5f") — dark blue
+     Line 17: sidebar-bg = rgb("#f0f4f8") — light blue
+     Line 60-61: #grid(columns: (30%, 70%)) ⚠️ PROBLEMATIC
+     Line 63-128: Left sidebar content
+     Line 131-172: Right content area
+     ❌ Beautiful but breaks ATS parsing
+
+DATA MODEL FOR STYLING:
+  crates/cr-core/src/resume.rs
+  └─ Line 5-33: Resume struct (no styling fields)
+     Line 55-72: PersonalInfo (no color/theme fields)
+     Line 74-88: Experience (no styling)
+     Line 131-141: SkillGroup (no level/proficiency)
+     Line 144-153: Project
+     Lines 197-205: ResumeMeta (metadata for AI, not styling)
+     
+     NEEDS ADDITIONS:
+     • SkillWithLevel struct with optional level: u8
+     • TemplateStyle struct with accent_color, theme, etc.
+
+TEMPLATE REGISTRY:
+  crates/cr-core/src/template.rs
+  └─ Line 5-45: TemplateId enum and methods
+     Line 78-88: TemplateMeta struct
+     Line 90-96: RenderRequest (no styling options)
+     Line 98-103: OutputFormat enum
+
+RENDER ENGINE:
+  crates/cr-render/src/engine.rs
+  └─ Line 20-92: render() function
+     Line 21-26: Takes RenderRequest, outputs PDF/Markdown
+     No per-template customization currently
+
+================================================================================
+README & DOCUMENTATION
+================================================================================
+
+  README.md (project root, 249 lines)
+  └─ Line 17: Claims "ATS-friendly" — needs validation
+     Line 7: CI badge shows GitHub Actions
+     Line 38-46: Features listed
+     Line 156-167: Template descriptions (table)
+     Missing: ATS validation documentation
+     Missing: Template customization guide
+     Missing: Publishing/distribution info
+
+================================================================================
+CRATES STRUCTURE
+================================================================================
+
+cr-cli/src/
+├─ main.rs (entry point)
+└─ commands/
+   ├─ new.rs         (interactive creation)
+   ├─ generate.rs    (PDF generation)
+   ├─ optimize.rs    (AI optimization)
+   ├─ tailor.rs      (JD matching)
+   ├─ review.rs      (AI scoring)
+   ├─ templates.rs   (list templates)
+   └─ config.rs      (manage config)
+
+cr-core/src/
+├─ resume.rs        (Resume, Experience, SkillGroup types)
+├─ template.rs      (TemplateId, RenderRequest)
+└─ lib.rs
+
+cr-io/src/
+├─ pdf_parse.rs     (✅ NEEDS IMPLEMENTATION)
+├─ markdown.rs      (Markdown rendering)
+├─ yaml.rs          (YAML parsing)
+├─ json.rs          (JSON parsing)
+└─ data_file.rs     (File I/O utilities)
+
+cr-render/src/
+├─ engine.rs        (Typst compilation engine)
+├─ template_registry.rs (Template lookup)
+├─ data_bridge.rs   (Resume → JSON conversion)
+└─ lib.rs
+
+cr-config/src/
+├─ model.rs         (AppConfig, AiConfig, OutputConfig)
+└─ lib.rs
+
+cr-service/src/
+├─ optimize.rs      (AI optimization)
+├─ tailor.rs        (JD matching)
+├─ review.rs        (AI scoring)
+├─ generate.rs      (Generation orchestration)
+└─ context.rs       (AI context building)
+
+cr-ai/src/ (AI integration)
+
+================================================================================
+TEMPLATES DIRECTORY
+================================================================================
+
+templates/
+├─ classic/
+│  └─ template.typ (135 lines) ✅ ATS-friendly
+├─ modern/
+│  └─ template.typ (260 lines) ✅ Good baseline
+├─ minimal/
+│  └─ template.typ (130 lines) ⚠️ Needs hierarchy
+├─ academic/
+│  └─ template.typ (152 lines) ✅ Well-structured
+└─ two-column/
+   └─ template.typ (173 lines) ❌ ATS-incompatible
+
+Each template reads:
+  • Data: resume-data.json (written by data_bridge.rs)
+  • Language: passed via --input lang=en|zh
+  • Inputs: photo, fonts, colors (all hardcoded)
+
+================================================================================
+QUICK ACTION ITEMS WITH FILE PATHS
+================================================================================
+
+🟢 IMMEDIATE (Edit these files today):
+  1. crates/cr-cli/Cargo.toml
+     Add 6 missing fields (description, repository, etc.)
+     Then run: cargo publish --dry-run
+
+🟡 SHORT-TERM (2-4 days):
+  2. crates/cr-io/src/pdf_parse.rs
+     Replace TODO with pdf-extract implementation
+  
+  3. crates/cr-cli/src/commands/
+     Create new validate.rs command
+  
+  4. templates/modern/template.typ
+     Enhance spacing and visual hierarchy
+
+🔴 LONGER-TERM (4-7 days):
+  5. crates/cr-core/src/resume.rs
+     Add SkillWithLevel, TemplateStyle structs
+  
+  6. Create: scripts/homebrew/coderesume.rb
+     New file for Homebrew distribution
+  
+  7. Create: templates/ats-simple/template.typ
+     New ATS-friendly template variant
+  
+  8. Create: templates/brilliant/template.typ
+     New template with skill bars, customization
+
+================================================================================
