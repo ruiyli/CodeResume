@@ -4,7 +4,7 @@
 
 **AI-powered resume generator for tech professionals**
 
-[![CI](https://github.com/YOUR_USERNAME/CodeResume/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/CodeResume/actions/workflows/ci.yml)
+[![CI](https://github.com/ruiyli/CodeResume/actions/workflows/ci.yml/badge.svg)](https://github.com/ruiyli/CodeResume/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/Rust-1.75+-orange.svg)](https://www.rust-lang.org/)
 
@@ -55,7 +55,7 @@ CodeResume is a CLI tool that generates beautiful, ATS-friendly PDF resumes from
 ### Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/CodeResume.git
+git clone https://github.com/ruiyli/CodeResume.git
 cd CodeResume
 cargo build --release
 ```
