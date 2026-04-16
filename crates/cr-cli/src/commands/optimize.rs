@@ -18,6 +18,9 @@ pub struct OptimizeArgs {
 }
 
 pub async fn run(args: OptimizeArgs, config: &AppConfig) -> anyhow::Result<()> {
+    // Validate API configuration before attempting long operations
+    cr_ai::provider::validate_api_config(&config.ai)?;
+
     let resume = cr_io::data_file::load(&args.input)?;
     println!("Loaded resume for: {}", resume.personal.name);
     println!("Optimizing with AI ({})...\n", config.ai.provider);

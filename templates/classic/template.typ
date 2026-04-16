@@ -132,3 +132,35 @@
     v(0.3em)
   }
 }
+
+// CUSTOM SECTIONS
+#if "custom-sections" in data {
+  for section in data.at("custom-sections", default: ()) {
+    section-heading(section.title)
+    for item in section.at("items", default: ()) {
+      if "heading" in item and item.heading != none {
+        if "subheading" in item and item.subheading != none {
+          [#text(weight: "bold")[#item.heading] — #item.subheading]
+        } else {
+          [#text(weight: "bold")[#item.heading]]
+        }
+        v(0.1em)
+      } else if "subheading" in item and item.subheading != none {
+        [#text(weight: "bold")[#item.subheading]]
+        v(0.1em)
+      }
+      if "date" in item and item.date != none {
+        text(size: 9pt, fill: muted)[#item.date]
+        v(0.05em)
+      }
+      if "body" in item and item.body != none {
+        text(size: 9.5pt)[#item.body]
+        v(0.1em)
+      }
+      for bullet in item.at("bullets", default: ()) {
+        [- #text(size: 9.5pt)[#bullet]]
+      }
+      v(0.2em)
+    }
+  }
+}

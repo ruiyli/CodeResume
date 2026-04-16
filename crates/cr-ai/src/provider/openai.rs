@@ -1,5 +1,6 @@
 use super::*;
 use reqwest::Client;
+use std::time::Duration;
 use serde_json::json;
 
 pub struct OpenAiProvider {
@@ -17,7 +18,7 @@ impl OpenAiProvider {
             .ok_or_else(|| anyhow::anyhow!("Missing API key for OpenAI. Set OPENAI_API_KEY or configure via `coderesume config set ai.api_key <KEY>`"))?;
 
         Ok(Self {
-            client: Client::new(),
+            client: Client::builder().timeout(Duration::from_secs(30)).build()?,
             api_key,
             model: config.model.clone().unwrap_or_else(|| "gpt-4o".to_string()),
             base_url: config

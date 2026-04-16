@@ -1,5 +1,6 @@
 use super::*;
 use reqwest::Client;
+use std::time::Duration;
 use serde_json::json;
 
 pub struct ClaudeProvider {
@@ -16,7 +17,7 @@ impl ClaudeProvider {
             .clone()
             .ok_or_else(|| anyhow::anyhow!("Missing API key for Claude. Set ANTHROPIC_API_KEY or configure via `coderesume config set ai.api_key <KEY>`"))?;
         Ok(Self {
-            client: Client::new(),
+            client: Client::builder().timeout(Duration::from_secs(30)).build()?,
             api_key,
             model: config
                 .model

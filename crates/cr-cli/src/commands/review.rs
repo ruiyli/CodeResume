@@ -16,6 +16,9 @@ pub struct ReviewArgs {
 }
 
 pub async fn run(args: ReviewArgs, config: &AppConfig) -> anyhow::Result<()> {
+    // Validate API configuration before attempting long operations
+    cr_ai::provider::validate_api_config(&config.ai)?;
+
     let resume = cr_io::data_file::load(&args.input)?;
     println!("Reviewing resume for: {}\n", resume.personal.name);
 
