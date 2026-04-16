@@ -14,7 +14,7 @@
 
 ---
 
-CodeResume is a CLI tool that generates beautiful, ATS-friendly PDF resumes from YAML/JSON data. It features AI-powered content optimization via Claude or OpenAI, 5 professional Typst templates, and full Chinese/English bilingual support.
+CodeResume is a CLI tool that generates beautiful, ATS-friendly PDF resumes from YAML/JSON data. It features AI-powered content optimization via Claude or OpenAI, 7 professional Typst templates, and full Chinese/English bilingual support.
 
 ## Demo
 
@@ -25,22 +25,28 @@ CodeResume is a CLI tool that generates beautiful, ATS-friendly PDF resumes from
 <td><b>Minimal</b></td>
 <td><b>Two-Column</b></td>
 <td><b>Academic</b></td>
+<td><b>ATS-Simple</b></td>
+<td><b>Brilliant</b></td>
 </tr>
 <tr>
-<td><img src="assets/demo-modern.png" width="150"/></td>
-<td><img src="assets/demo-classic.png" width="150"/></td>
-<td><img src="assets/demo-minimal.png" width="150"/></td>
-<td><img src="assets/demo-two-column.png" width="150"/></td>
-<td><img src="assets/demo-academic.png" width="150"/></td>
+<td><img src="assets/demo-modern.png" width="130"/></td>
+<td><img src="assets/demo-classic.png" width="130"/></td>
+<td><img src="assets/demo-minimal.png" width="130"/></td>
+<td><img src="assets/demo-two-column.png" width="130"/></td>
+<td><img src="assets/demo-academic.png" width="130"/></td>
+<td><img src="assets/demo-ats-simple.png" width="130"/></td>
+<td><img src="assets/demo-brilliant.png" width="130"/></td>
 </tr>
 </table>
 
 ## Features
 
-- **5 Professional Templates** — Modern, Classic, Minimal, Two-Column, Academic
+- **7 Professional Templates** — Modern, Classic, Minimal, Two-Column, Academic, ATS-Simple, Brilliant
+- **ATS Compatibility** — Built-in ATS check (`validate --check-ats`), dedicated ATS-friendly template
 - **AI Enhancement** — Smart rewriting, JD matching, scoring & suggestions (Claude / OpenAI)
-- **Bilingual** — Full Chinese & English support with proper font rendering
+- **Bilingual** — Full Chinese & English support with proper CJK font rendering
 - **Photo Support** — Circular avatar in resume header
+- **Custom Sections** — Add any custom section (Awards, Volunteering, etc.)
 - **Multiple Formats** — PDF (via Typst) + Markdown output
 - **Data-driven** — YAML/JSON resume data, easy to version control
 - **Fast** — Native Rust performance, sub-second PDF generation
@@ -105,6 +111,16 @@ cargo run -- tailor my-resume.yaml --jd job-description.txt
 cargo run -- review my-resume.yaml
 ```
 
+### Validate & ATS Check
+
+```bash
+# Validate resume renders correctly with all templates
+cargo run -- validate my-resume.yaml
+
+# Check ATS compatibility (extracts text from PDF and analyzes)
+cargo run -- validate my-resume.yaml --check-ats
+```
+
 ## Resume Data Format
 
 ```yaml
@@ -138,6 +154,13 @@ skills:
   groups:
     - category: "Languages"
       skills: ["Rust", "Go", "Python"]
+
+custom_sections:                   # Optional: add any custom section
+  - title: "Awards"
+    items:
+      - heading: "Best Innovation"
+        subheading: "TechCorp 2023"
+        body: "Awarded for leading the platform redesign"
 ```
 
 See [sample-data/](sample-data/) for complete examples.
@@ -146,8 +169,9 @@ See [sample-data/](sample-data/) for complete examples.
 
 | Command | Description | Needs AI |
 |---------|-------------|:--------:|
-| `coderesume new` | Interactive resume creation | - |
+| `coderesume new` | Interactive resume creation wizard | - |
 | `coderesume generate <file>` | Generate PDF/Markdown | - |
+| `coderesume validate <file>` | Validate resume & ATS compatibility check | - |
 | `coderesume templates` | List available templates | - |
 | `coderesume config` | Manage configuration | - |
 | `coderesume optimize <file>` | AI-powered rewriting | Yes |
@@ -158,13 +182,15 @@ See [sample-data/](sample-data/) for complete examples.
 
 | Template | Style | Best For |
 |----------|-------|----------|
-| **modern** | Clean, blue accents | Tech companies, startups |
+| **modern** | Clean, blue accents, tech pills | Tech companies, startups |
 | **classic** | Traditional serif | Enterprise, finance |
 | **minimal** | Ultra-clean whitespace | Senior engineers |
 | **two-column** | Sidebar layout | Dense information |
-| **academic** | Education-first | Research, academia |
+| **academic** | Education-first, publications | Research, academia |
+| **ats-simple** | Plain single-column text | ATS parsing, applicant tracking |
+| **brilliant** | Vibrant gradients, visual flair | Creative & design roles |
 
-All templates support Chinese and English with proper font rendering.
+All templates support Chinese and English with proper CJK font rendering (PingFang SC, Songti SC, etc.).
 
 ## Architecture
 
@@ -210,10 +236,12 @@ CodeResume 是一个面向技术岗位求职者的 CLI 智能简历生成工具�
 
 ### 特性
 
-- **5 套精美模板** — 现代、经典、极简、双栏、学术
+- **7 套精美模板** — 现代、经典、极简、双栏、学术、ATS兼容、炫彩
+- **ATS 兼容性检测** — 内置 ATS 检查命令，专用 ATS 友好模板
 - **AI 增强** — 智能润色、JD 匹配、评分建议（支持 Claude / OpenAI）
 - **中英双语** — 完整中文支持，苹方/宋体等系统字体渲染
 - **照片支持** — 圆形头像显示
+- **自定义板块** — 支持添加任意自定义内容（获奖、志愿服务等）
 - **多格式输出** — PDF (Typst) + Markdown
 - **数据驱动** — YAML/JSON 格式，方便版本管理
 
@@ -229,6 +257,9 @@ cargo run -- generate sample-data/example-zh.yaml --output 我的简历 --format
 
 # 查看所有模板
 cargo run -- templates
+
+# ATS 兼容性检查
+cargo run -- validate my-resume.yaml --check-ats
 ```
 
 ### AI 功能
