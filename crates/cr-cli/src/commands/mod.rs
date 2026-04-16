@@ -5,3 +5,4 @@ pub mod optimize;
 pub mod review;
 pub mod tailor;
 pub mod templates;
+pub mod validate;

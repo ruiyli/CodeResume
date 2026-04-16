@@ -32,6 +32,8 @@ pub enum Commands {
     New(commands::new::NewArgs),
     /// Generate resume from a data file
     Generate(commands::generate::GenerateArgs),
+    /// Validate resume and check ATS compatibility
+    Validate(commands::validate::ValidateArgs),
     /// AI-optimize an existing resume
     Optimize(commands::optimize::OptimizeArgs),
     /// Tailor resume to a job description
@@ -65,6 +67,7 @@ async fn main() -> anyhow::Result<()> {
         Commands::Config(args) => commands::config::run(args, &config)?,
         Commands::Templates => commands::templates::run(&config)?,
         Commands::Generate(args) => commands::generate::run(args, &config).await?,
+        Commands::Validate(args) => commands::validate::run(args, &config).await?,
         Commands::Optimize(args) => commands::optimize::run(args, &config).await?,
         Commands::Tailor(args) => commands::tailor::run(args, &config).await?,
         Commands::Review(args) => commands::review::run(args, &config).await?,

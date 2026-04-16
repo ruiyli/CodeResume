@@ -10,6 +10,7 @@ pub enum TemplateId {
     Minimal,
     TwoColumn,
     Academic,
+    AtSimple,
 }
 
 impl TemplateId {
@@ -20,6 +21,7 @@ impl TemplateId {
             Self::Minimal,
             Self::TwoColumn,
             Self::Academic,
+            Self::AtSimple,
         ]
     }
 
@@ -30,6 +32,7 @@ impl TemplateId {
             Self::Minimal => "minimal",
             Self::TwoColumn => "two-column",
             Self::Academic => "academic",
+            Self::AtSimple => "ats-simple",
         }
     }
 
@@ -40,6 +43,7 @@ impl TemplateId {
             Self::Minimal => "Minimal",
             Self::TwoColumn => "Two Column",
             Self::Academic => "Academic",
+            Self::AtSimple => "ATS-Simple",
         }
     }
 
@@ -50,6 +54,7 @@ impl TemplateId {
             Self::Minimal => "极简",
             Self::TwoColumn => "双栏",
             Self::Academic => "学术",
+            Self::AtSimple => "ATS兼容",
         }
     }
 }
@@ -70,6 +75,7 @@ impl std::str::FromStr for TemplateId {
             "minimal" => Ok(Self::Minimal),
             "two-column" | "twocolumn" => Ok(Self::TwoColumn),
             "academic" => Ok(Self::Academic),
+            "ats-simple" | "atssimple" | "ats" => Ok(Self::AtSimple),
             _ => Err(format!("Unknown template: {s}")),
         }
     }

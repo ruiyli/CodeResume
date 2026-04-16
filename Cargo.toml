@@ -46,6 +46,9 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 # AI
 async-openai = "0.23"
 
+# PDF extraction
+pdf-extract = "0.8"
+
 # Misc
 tempfile = "3"
 dirs = "5"
