@@ -115,3 +115,33 @@ open_source:
     role: "Contributor"
     description: "Contributed performance improvements to the async runtime scheduler"
     stars: 25000
+
+certifications:
+  - name: "AWS Solutions Architect – Professional"
+    issuer: "Amazon Web Services"
+    date:
+      year: 2023
+      month: 5
+  - name: "Certified Kubernetes Administrator (CKA)"
+    issuer: "Cloud Native Computing Foundation"
+    date:
+      year: 2022
+      month: 9
+
+publications:
+  - title: "Optimizing Raft Consensus for High-Throughput Key-Value Stores"
+    venue: "USENIX ATC 2023"
+    authors: "John Doe, Jane Smith"
+    date: 2023
+    url: "https://example.com/paper-raft"
+
+custom_sections:
+  - title: "Awards & Honors"
+    items:
+      - heading: "Best Innovation Award"
+        subheading: "TechCorp Inc."
+        date: "2023"
+        body: "Recognized for leading the real-time data pipeline project that transformed company infrastructure"
+      - heading: "Hackathon Winner"
+        subheading: "HackSF 2022"
+        body: "1st place for building an AI-powered code review tool in 48 hours"

@@ -23,6 +23,13 @@ pub fn load() -> anyhow::Result<AppConfig> {
         .context(format!("Failed to read config: {}", path.display()))?;
     let mut config: AppConfig = toml::from_str(&contents).context("Failed to parse config.toml")?;
     resolve_env_api_key(&mut config);
+
+    // Validate config values
+    if let Err(errors) = config.validate() {
+        let msg = errors.join("\n  - ");
+        anyhow::bail!("Invalid configuration in {}:\n  - {}", path.display(), msg);
+    }
+
     Ok(config)
 }
 

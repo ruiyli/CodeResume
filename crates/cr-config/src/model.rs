@@ -10,6 +10,47 @@ pub struct AppConfig {
     pub ui: UiConfig,
 }
 
+impl AppConfig {
+    /// Validate configuration values are within acceptable ranges.
+    pub fn validate(&self) -> Result<(), Vec<String>> {
+        let mut errors = Vec::new();
+
+        // AI config validation
+        if self.ai.temperature < 0.0 || self.ai.temperature > 2.0 {
+            errors.push(format!(
+                "ai.temperature must be between 0.0 and 2.0, got {}",
+                self.ai.temperature
+            ));
+        }
+        if self.ai.max_tokens == 0 || self.ai.max_tokens > 128_000 {
+            errors.push(format!(
+                "ai.max_tokens must be between 1 and 128000, got {}",
+                self.ai.max_tokens
+            ));
+        }
+        if !matches!(self.ai.provider.as_str(), "claude" | "openai" | "mock") {
+            errors.push(format!(
+                "ai.provider must be \"claude\", \"openai\", or \"mock\", got \"{}\"",
+                self.ai.provider
+            ));
+        }
+
+        // Output config validation
+        if !matches!(self.output.language.as_str(), "en" | "zh") {
+            errors.push(format!(
+                "output.language must be \"en\" or \"zh\", got \"{}\"",
+                self.output.language
+            ));
+        }
+
+        if errors.is_empty() {
+            Ok(())
+        } else {
+            Err(errors)
+        }
+    }
+}
+
 impl Default for AppConfig {
     fn default() -> Self {
         Self {
@@ -142,5 +183,51 @@ mod tests {
         let parsed: AppConfig = toml::from_str(&toml_str).unwrap();
         assert_eq!(parsed.ai.provider, config.ai.provider);
         assert_eq!(parsed.output.template, config.output.template);
+    }
+
+    #[test]
+    fn validate_default_config_passes() {
+        let config = AppConfig::default();
+        assert!(config.validate().is_ok());
+    }
+
+    #[test]
+    fn validate_bad_temperature() {
+        let mut config = AppConfig::default();
+        config.ai.temperature = 3.0;
+        let errors = config.validate().unwrap_err();
+        assert!(errors.iter().any(|e| e.contains("temperature")));
+    }
+
+    #[test]
+    fn validate_negative_temperature() {
+        let mut config = AppConfig::default();
+        config.ai.temperature = -0.5;
+        let errors = config.validate().unwrap_err();
+        assert!(errors.iter().any(|e| e.contains("temperature")));
+    }
+
+    #[test]
+    fn validate_bad_max_tokens() {
+        let mut config = AppConfig::default();
+        config.ai.max_tokens = 0;
+        let errors = config.validate().unwrap_err();
+        assert!(errors.iter().any(|e| e.contains("max_tokens")));
+    }
+
+    #[test]
+    fn validate_bad_provider() {
+        let mut config = AppConfig::default();
+        config.ai.provider = "gemini".to_string();
+        let errors = config.validate().unwrap_err();
+        assert!(errors.iter().any(|e| e.contains("provider")));
+    }
+
+    #[test]
+    fn validate_bad_language() {
+        let mut config = AppConfig::default();
+        config.output.language = "fr".to_string();
+        let errors = config.validate().unwrap_err();
+        assert!(errors.iter().any(|e| e.contains("language")));
     }
 }

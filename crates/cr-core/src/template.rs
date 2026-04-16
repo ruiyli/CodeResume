@@ -83,7 +83,13 @@ impl std::str::FromStr for TemplateId {
             "academic" => Ok(Self::Academic),
             "ats-simple" | "atssimple" | "ats" => Ok(Self::AtSimple),
             "brilliant" => Ok(Self::Brilliant),
-            _ => Err(format!("Unknown template: {s}")),
+            _ => {
+                let valid: Vec<&str> = Self::all().iter().map(|t| t.dir_name()).collect();
+                Err(format!(
+                    "Unknown template: \"{s}\". Valid templates: {}",
+                    valid.join(", ")
+                ))
+            }
         }
     }
 }

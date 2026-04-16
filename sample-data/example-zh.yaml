@@ -78,3 +78,38 @@ projects:
       - "单机支撑10万+QPS，P99延迟<1ms"
       - "支持热加载配置，零停机更新路由规则"
     technologies: ["Rust", "Tokio", "Redis"]
+
+  - name: "分布式任务调度平台"
+    description: "支持百万级定时任务的分布式调度系统，基于Go和etcd实现"
+    highlights:
+      - "支持Cron表达式和一次性任务，任务触发精度<100ms"
+      - "高可用架构，支持无缝扩缩容"
+    technologies: ["Go", "etcd", "gRPC", "MySQL"]
+
+certifications:
+  - name: "阿里云高级工程师认证"
+    issuer: "阿里云"
+    date:
+      year: 2022
+      month: 6
+  - name: "CKA (Certified Kubernetes Administrator)"
+    issuer: "CNCF"
+    date:
+      year: 2021
+      month: 11
+
+publications:
+  - title: "面向超大规模推荐系统的分布式缓存优化方案"
+    venue: "中国计算机学会通讯 2023"
+    authors: "张伟, 李明"
+    date: 2023
+
+custom_sections:
+  - title: "荣誉与获奖"
+    items:
+      - heading: "字节跳动年度技术突破奖"
+        date: "2023"
+        body: "表彰在推荐系统重构项目中的突出技术贡献"
+      - heading: "ACM-ICPC 亚洲区域赛银奖"
+        subheading: "清华大学代表队"
+        date: "2017"
