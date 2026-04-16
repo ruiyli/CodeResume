@@ -11,6 +11,7 @@ pub enum TemplateId {
     TwoColumn,
     Academic,
     AtSimple,
+    Brilliant,
 }
 
 impl TemplateId {
@@ -22,6 +23,7 @@ impl TemplateId {
             Self::TwoColumn,
             Self::Academic,
             Self::AtSimple,
+            Self::Brilliant,
         ]
     }
 
@@ -33,6 +35,7 @@ impl TemplateId {
             Self::TwoColumn => "two-column",
             Self::Academic => "academic",
             Self::AtSimple => "ats-simple",
+            Self::Brilliant => "brilliant",
         }
     }
 
@@ -44,6 +47,7 @@ impl TemplateId {
             Self::TwoColumn => "Two Column",
             Self::Academic => "Academic",
             Self::AtSimple => "ATS-Simple",
+            Self::Brilliant => "Brilliant",
         }
     }
 
@@ -55,6 +59,7 @@ impl TemplateId {
             Self::TwoColumn => "双栏",
             Self::Academic => "学术",
             Self::AtSimple => "ATS兼容",
+            Self::Brilliant => "炫彩",
         }
     }
 }
@@ -76,6 +81,7 @@ impl std::str::FromStr for TemplateId {
             "two-column" | "twocolumn" => Ok(Self::TwoColumn),
             "academic" => Ok(Self::Academic),
             "ats-simple" | "atssimple" | "ats" => Ok(Self::AtSimple),
+            "brilliant" => Ok(Self::Brilliant),
             _ => Err(format!("Unknown template: {s}")),
         }
     }
