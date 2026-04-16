@@ -4,6 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 authors.workspace = true
+publish = false
 description = "Core data types and models for CodeResume resume generation"
 repository = "https://github.com/ruiyli/CodeResume"
 homepage = "https://github.com/ruiyli/CodeResume"

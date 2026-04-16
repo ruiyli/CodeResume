@@ -50,11 +50,11 @@ async-openai = "0.23"
 tempfile = "3"
 dirs = "5"
 
-# Workspace crates - with version specs for publishing
-cr-core = { path = "crates/cr-core", version = "0.1.0" }
-cr-config = { path = "crates/cr-config", version = "0.1.0" }
-cr-io = { path = "crates/cr-io", version = "0.1.0" }
-cr-ai = { path = "crates/cr-ai", version = "0.1.0" }
-cr-render = { path = "crates/cr-render", version = "0.1.0" }
-cr-service = { path = "crates/cr-service", version = "0.1.0" }
-cr-cli = { path = "crates/cr-cli", version = "0.1.0" }
+# Workspace crates - path only (no version spec for internal crates)
+cr-core = { path = "crates/cr-core" }
+cr-config = { path = "crates/cr-config" }
+cr-io = { path = "crates/cr-io" }
+cr-ai = { path = "crates/cr-ai" }
+cr-render = { path = "crates/cr-render" }
+cr-service = { path = "crates/cr-service" }
+cr-cli = { path = "crates/cr-cli" }

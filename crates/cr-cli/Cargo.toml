@@ -16,12 +16,12 @@ name = "coderesume"
 path = "src/main.rs"
 
 [dependencies]
-cr-core.workspace = true
-cr-config.workspace = true
-cr-service.workspace = true
-cr-render.workspace = true
-cr-io.workspace = true
-cr-ai.workspace = true
+cr-core = { path = "../cr-core", version = "0.1" }
+cr-config = { path = "../cr-config", version = "0.1" }
+cr-service = { path = "../cr-service", version = "0.1" }
+cr-render = { path = "../cr-render", version = "0.1" }
+cr-io = { path = "../cr-io", version = "0.1" }
+cr-ai = { path = "../cr-ai", version = "0.1" }
 clap.workspace = true
 inquire.workspace = true
 tokio.workspace = true
